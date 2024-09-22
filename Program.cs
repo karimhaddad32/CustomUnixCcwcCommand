@@ -1,4 +1,6 @@
 ﻿using CustomCcwc;
+using System.Runtime.ConstrainedExecution;
+using System.Text;
 
 
 while (true)
@@ -65,8 +67,17 @@ while (true)
         }
         catch (FileNotFoundException)
         {
-            Console.WriteLine("Invalid File name");
-            continue;
+            Console.Write("Enter text: ");
+
+            string?  text = Console.ReadLine();
+
+            // TODO: Either change the input of the Calculators to String or Create a file, save it and then pass the path to the Calculators
+
+            //ICcwcCalculator calculator = CalculatorFactory.CreateCalculator(inputs.Length > 1 ? inputs[1] : string.Empty);
+
+            //string result = calculator.Calculate(currentFilePath);
+
+            //Console.WriteLine($"{result} {currentFilePath}"); continue;
         }
        
     }
