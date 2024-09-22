@@ -1,4 +1,5 @@
 ﻿using CustomCcwc;
+using System.IO;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 
@@ -69,16 +70,24 @@ while (true)
         {
             Console.Write("Enter text: ");
 
-            string?  text = Console.ReadLine();
+            string? text = Console.ReadLine();
 
-            // TODO: Either change the input of the Calculators to String or Create a file, save it and then pass the path to the Calculators
+            if (text == null)
+            {
+                Console.WriteLine($"0 {currentFilePath}");
+                continue;
+            }
 
-            //ICcwcCalculator calculator = CalculatorFactory.CreateCalculator(inputs.Length > 1 ? inputs[1] : string.Empty);
+            File.AppendAllLines(currentFilePath!, [text]);
 
-            //string result = calculator.Calculate(currentFilePath);
+            ICcwcCalculator calculator = CalculatorFactory.CreateCalculator(inputs.Length > 1 ? inputs[1] : string.Empty);
 
-            //Console.WriteLine($"{result} {currentFilePath}"); continue;
+            string result = calculator.Calculate(currentFilePath!);
+
+            Console.WriteLine($"{result} {currentFilePath}");
+
+            File.Delete(currentFilePath!);
         }
-       
+
     }
 }
