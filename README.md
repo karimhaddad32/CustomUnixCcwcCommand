@@ -1,4 +1,4 @@
-**ccwc: A Simple Word Count Tool**
+**ccwc: A Simple Word Count Tool (Mock of the wc Unix command)**
 
 **Purpose:**
 
